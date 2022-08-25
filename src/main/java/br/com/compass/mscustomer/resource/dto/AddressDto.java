@@ -2,6 +2,7 @@ package br.com.compass.mscustomer.resource.dto;
 
 import br.com.compass.mscustomer.domain.model.Address;
 import br.com.compass.mscustomer.domain.model.enums.State;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class AddressDto {
 
     private Long id;

@@ -2,6 +2,7 @@ package br.com.compass.mscustomer.resource.dto;
 
 import br.com.compass.mscustomer.domain.model.Customer;
 import br.com.compass.mscustomer.domain.model.enums.Sex;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class CustomerDto {
 
     private Long id;

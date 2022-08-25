@@ -2,6 +2,7 @@ package br.com.compass.mscustomer.domain.model;
 
 import br.com.compass.mscustomer.domain.model.enums.State;
 import br.com.compass.mscustomer.resource.dto.AddressFormDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,6 +44,7 @@ public class Address {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
+    @JsonIgnore
     private Customer customer;
 
     public Address(AddressFormDto addressFormDto, Customer customer) {
