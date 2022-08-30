@@ -70,4 +70,10 @@ public class AddressResource {
 
         return Response.noContent().build();
     }
+
+    @GET
+    @Path("/order/{addressId}")
+    public Address getAddress(@PathParam("addressId") Long addressId){
+        return addressRepository.findById(addressId);
+    }
 }

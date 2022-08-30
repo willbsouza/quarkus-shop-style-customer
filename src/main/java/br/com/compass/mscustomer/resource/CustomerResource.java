@@ -84,6 +84,12 @@ public class CustomerResource {
         return Response.status(400).entity("Incorrect data. Check the email information, cpf and the new password and password confirmation fields must be the same.").build();
     }
 
+    @Path("/order/{customerId}")
+    @GET
+    public Customer getCustomer(@PathParam("customerId") Long customerId){
+        return customerRepository.findById(customerId);
+    }
+
     private Boolean verificationPassword(Customer customer, CustomerChangePasswordDto passwordDto) {
         if(passwordDto.getOldPassword().equals(customer.getPassword())
                 && passwordDto.getCpf().equals(customer.getCpf())
