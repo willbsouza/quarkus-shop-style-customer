@@ -3,7 +3,6 @@ package br.com.compass.mscustomer.resource;
 import br.com.compass.mscustomer.domain.model.Customer;
 import br.com.compass.mscustomer.repository.CustomerRepository;
 import br.com.compass.mscustomer.resource.dto.*;
-import io.quarkus.hibernate.orm.panache.PanacheQuery;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -30,7 +29,7 @@ public class CustomerResource {
     public Response findById(@PathParam("id") Long id){
         Customer customer = customerRepository.findById(id);
         if(customer == null){
-            return Response.status(404).build();
+            return Response.status(404).entity("Customer id: " + id + " not found.").build();
         }
         return Response.ok(new CustomerDto(customer)).build();
     }
@@ -49,7 +48,7 @@ public class CustomerResource {
     public Response updateById(@PathParam("id") Long id, @Valid CustomerFormUpdateDto customerFormUpdateDto){
         Customer customer = customerRepository.findById(id);
         if(customer == null){
-            return Response.status(404).build();
+            return Response.status(404).entity("Customer id: " + id + " not found.").build();
         }
         customer.setFirstName(customerFormUpdateDto.getFirstName());
         customer.setLastName(customerFormUpdateDto.getLastName());
